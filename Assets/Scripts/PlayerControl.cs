@@ -4,23 +4,70 @@ using UnityEngine;
 
 public class PlayerControl : MonoBehaviour
 {
+    //speeds
     public float speed = 3f;
     public float movementSpeed = 10f;
     public float weaponSpeedMod = 8.0f;
 
-
+    //Timers and weapon
     public GameObject arrow;
     public float fireSpeed, fireReload;
     public float jumpTemp, jumpTimer;
+
+    //UI stuff
+    public GameObject GameUI, InventoryUI, MenuUI;
+    public int menuCheck = 0;
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
+    void SwitchUI()
+    {
+
+         menuCheck = 0;
+     
+         GameUI.SetActive(true);
+         InventoryUI.SetActive(false);
+         MenuUI.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown("i"))
+        {
+            //Inventory
+
+            if (menuCheck == 0)
+            {
+                GameUI.SetActive(false);
+                InventoryUI.SetActive(true);
+                MenuUI.SetActive(false);
+                menuCheck = 1;
+            }
+            else
+            {
+                SwitchUI();
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //Menu
+            if(menuCheck == 0)
+            {
+                //off off on
+                GameUI.SetActive(false);
+                InventoryUI.SetActive(false);
+                MenuUI.SetActive(true);
+                menuCheck = 2;
+            }
+            else
+            {
+                SwitchUI();
+            }
+        }
 
         fireReload -= Time.deltaTime;
         
@@ -70,7 +117,7 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetButtonUp("Jump") && jumpTemp <= 0)
         {
             tempVect = tempVect.normalized * movementSpeed * Time.deltaTime;
-            GetComponent<Rigidbody2D>().velocity = tempVect * 40.0f;
+            GetComponent<Rigidbody2D>().velocity = tempVect * 250.0f;
             transform.position += tempVect;
             jumpTemp = jumpTimer;
         }
