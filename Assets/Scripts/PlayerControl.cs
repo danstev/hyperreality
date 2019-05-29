@@ -8,14 +8,16 @@ public class PlayerControl : MonoBehaviour
     public float speed = 3f;
     public float movementSpeed = 10f;
     public float weaponSpeedMod = 8.0f;
+    public Transform p;
 
     //Timers and weapon
     public GameObject arrow;
     public float fireSpeed, fireReload;
     public float jumpTemp, jumpTimer;
+    public Collider2D coll;
 
     //UI stuff
-    public GameObject GameUI, InventoryUI, MenuUI;
+    public GameObject GameUI, InventoryUI, MenuUI, cam;
     public int menuCheck = 0;
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,12 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown("i"))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            cam.transform.localPosition = new Vector3(0,0,-18);
+        }
+
+        if (Input.GetKeyDown("i"))
         {
             //Inventory
 
@@ -81,6 +88,7 @@ public class PlayerControl : MonoBehaviour
 
          if (Input.GetMouseButton(0) && fireReload <=0)
         {
+
             //fireReload = fireSpeed;
             //Vector2 shootDir = new Vector2((Input.mousePosition.x/Screen.width) - 0.5f, (Input.mousePosition.y / Screen.height) - 0.5f);
             //shootDir.Normalize();
@@ -95,6 +103,7 @@ public class PlayerControl : MonoBehaviour
             Destroy(g,5.0f);
             */
 
+            coll.enabled = true;
 
             float hi = (Input.mousePosition.x / Screen.width) - 0.5f;
             float vi = (Input.mousePosition.y / Screen.height) - 0.5f;
@@ -106,19 +115,24 @@ public class PlayerControl : MonoBehaviour
 
         }
 
+        if (Input.GetMouseButtonUp(0))
+        {
+            coll.enabled = false;
+        }
+
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
 
         Vector3 tempVect = new Vector3(h, v, 0);
         tempVect = tempVect.normalized * movementSpeed * Time.deltaTime;
 
-        transform.position += tempVect;
+        p.position += tempVect;
 
         if (Input.GetButtonUp("Jump") && jumpTemp <= 0)
         {
             tempVect = tempVect.normalized * movementSpeed * Time.deltaTime;
             GetComponent<Rigidbody2D>().velocity = tempVect * 250.0f;
-            transform.position += tempVect;
+            p.position += tempVect;
             jumpTemp = jumpTimer;
         }
         else if(jumpTemp >= 0)
