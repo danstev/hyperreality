@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     public float speed = 3f;
     public float movementSpeed = 10f;
     public float weaponSpeedMod = 8.0f;
-    public Transform p;
+    public Rigidbody2D p;
 
     //Timers and weapon
     public GameObject arrow;
@@ -124,15 +124,15 @@ public class PlayerControl : MonoBehaviour
         float v = Input.GetAxis("Vertical");
 
         Vector3 tempVect = new Vector3(h, v, 0);
-        tempVect = tempVect.normalized * movementSpeed * Time.deltaTime;
+        //tempVect = tempVect.normalized * movementSpeed * Time.deltaTime;
 
-        p.position += tempVect;
+        p.MovePosition(new Vector2((p.transform.position.x + tempVect.x * speed * Time.deltaTime),(p.transform.position.y + tempVect.y * speed * Time.deltaTime)));
 
         if (Input.GetButtonUp("Jump") && jumpTemp <= 0)
         {
             tempVect = tempVect.normalized * movementSpeed * Time.deltaTime;
             GetComponent<Rigidbody2D>().velocity = tempVect * 250.0f;
-            p.position += tempVect;
+            //p.position += tempVect;
             jumpTemp = jumpTimer;
         }
         else if(jumpTemp >= 0)
