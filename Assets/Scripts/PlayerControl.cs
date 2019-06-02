@@ -9,6 +9,7 @@ public class PlayerControl : MonoBehaviour
     public float movementSpeed = 10f;
     public float weaponSpeedMod = 8.0f;
     public Rigidbody2D p;
+    public float timer;
 
     //Timers and weapon
     public GameObject arrow;
@@ -77,17 +78,17 @@ public class PlayerControl : MonoBehaviour
         }
 
         fireReload -= Time.deltaTime;
+        timer += Time.deltaTime;
         
 
         if (!Input.GetMouseButton(0))
         {
-            float t = fireSpeed/ fireReload;
-            Vector3 n = Vector3.MoveTowards(arrow.transform.localPosition, new Vector3(-0.7f, 0.5f, 0.0f), t);
-            arrow.transform.localPosition -= n;
+
+            arrow.transform.position = Vector3.MoveTowards(arrow.transform.position, transform.position, Time.deltaTime * 40);
         }
 
          if (Input.GetMouseButton(0) && fireReload <=0)
-        {
+         {
 
             //fireReload = fireSpeed;
             //Vector2 shootDir = new Vector2((Input.mousePosition.x/Screen.width) - 0.5f, (Input.mousePosition.y / Screen.height) - 0.5f);
@@ -113,9 +114,21 @@ public class PlayerControl : MonoBehaviour
             
             arrow.transform.localPosition += tempVecti;
 
+            Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
+            Vector2 mouseOnScreen = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+            float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
+            arrow.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 45));
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButton(1) && fireReload <= 0)
+        {
+            coll.enabled = true;
+
+            //POS
+            arrow.transform.position = new Vector3(transform.position.x + (Mathf.Cos(timer * 15) * 2) ,transform.position.y + (Mathf.Sin(timer * 15) * 2) , 0);
+        }
+
+        if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
         {
             coll.enabled = false;
         }
@@ -140,5 +153,10 @@ public class PlayerControl : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector3(0,0,0);
             jumpTemp -= Time.deltaTime;
         }
+    }
+
+    float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
+    {
+        return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
     }
 }
