@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float speed, reach, timer, bulletSpeed;
     public int damage;
     public GameObject bullet;
+    public GameObject health;
     // an enum of possible behaviours for enemies.
     public enum enEnemyActions { UNKNOWN = 0, ROAM, ATTACK, RETREAT };
     public Queue<enEnemyActions> actionQueue = new Queue<enEnemyActions>();
@@ -29,7 +30,6 @@ public class Enemy : MonoBehaviour
         }
 
         tempTimer -= Time.deltaTime;
-        
         // Decide next action for queue
         if (target == null && tempTimer <= 0)
             actionQueue.Enqueue(enEnemyActions.ROAM);
@@ -141,5 +141,10 @@ public class Enemy : MonoBehaviour
             Debug.Log(other.name + " has left aggro range.");
             target = null;
         }
+    }
+
+    void OnDestroy() {
+        Debug.Log("Died");
+        Instantiate(health,p);
     }
 }

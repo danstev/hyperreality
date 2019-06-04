@@ -236,3 +236,4 @@ MonoBehaviour:
   bulletSpeed: 5
   damage: 5
   bullet: {fileID: 294810332299006703, guid: 73c7965365ce92340b8f4ae5df1d90db, type: 3}
+  health: {fileID: 4435376417800850303, guid: 0a424e96906042848ac49e020f35dea7, type: 3}
