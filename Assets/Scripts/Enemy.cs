@@ -12,6 +12,9 @@ public class Enemy : MonoBehaviour
     public float speed, reach, timer, bulletSpeed;
     public int damage;
     public GameObject bullet;
+    // an enum of possible behaviours for enemies.
+    public enum enEnemyActions { UNKNOWN = 0, ROAM, ATTACK, RETREAT };
+    public Queue<enEnemyActions> actionQueue = new Queue<enEnemyActions>();
 
     private void Start()
     {
@@ -26,22 +29,42 @@ public class Enemy : MonoBehaviour
         }
 
         tempTimer -= Time.deltaTime;
-
+        
+        // Decide next action for queue
         if (target == null && tempTimer <= 0)
-        {
-            timer = Random.Range(1f, 5f);
-            tempTimer = timer;
-            StartCoroutine(RandomMove(timer, p));
-            Debug.Log(gameObject.name + " is randomly moving.");
-        }
+            actionQueue.Enqueue(enEnemyActions.ROAM);
         else if (target != null && tempTimer <= 0)
-        {
-            timer = Random.Range(1f, 5f);
-            tempTimer = timer;
-            StartCoroutine(AttackMove(timer, target));
-            Debug.Log(gameObject.name + " is attacking: " + target.name + ".");
-        }
+            actionQueue.Enqueue(enEnemyActions.ATTACK);
 
+        if (!ConsumeQueue())
+            Debug.Log("No Action Provided for that event");
+
+    }
+
+    // Handles next item from Queue. Returns false if action unknown
+    bool ConsumeQueue() {
+        if (actionQueue.Count == 0)
+            return true; // Nothing to process
+
+        enEnemyActions currentAction = actionQueue.Dequeue(); // Get the action to consume from front of queue
+
+        // Set up timer vars (these appeared to be the same for each case)
+        timer = Random.Range(1f, 5f);
+        tempTimer = timer;
+
+        switch (currentAction) {
+            case(enEnemyActions.ROAM):
+                StartCoroutine(RandomMove(timer, p));
+                Debug.Log(gameObject.name + " is randomly moving.");
+                break;
+            case (enEnemyActions.ATTACK):
+                StartCoroutine(AttackMove(timer, target));
+                Debug.Log(gameObject.name + " is attacking: " + target.name + ".");
+                break;
+            default:
+                return false;
+        }
+        return true;
     }
 
     IEnumerator AttackMove(float time, Transform target)
