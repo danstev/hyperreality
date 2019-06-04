@@ -12,8 +12,22 @@ public class Health : MonoBehaviour
 
     public Text healthUI;
 
+    public AudioSource DamageTaken;
+    public AudioClip[] HitTaken;
+
+    void OnStart()
+    {
+        DamageTaken = GetComponent<AudioSource>();
+    }
+
     void TakeDamage(int dmg)
     {
+        if(DamageTaken != null)
+        {
+            DamageTaken.clip = HitTaken[Random.Range(0,HitTaken.Length)];
+            DamageTaken.Play();
+        }
+
         health -= dmg;
         if (health > maxHealth)
             health = maxHealth;
