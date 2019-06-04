@@ -119,6 +119,7 @@ MonoBehaviour:
   damage: 5
   FriendCheck: 1
   NameToCheck: HitBox
+  shouldDestroyOnCollision: 0
 --- !u!61 &-8143397367601424096
 BoxCollider2D:
   m_ObjectHideFlags: 0

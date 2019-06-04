@@ -14,12 +14,14 @@ public class Health : MonoBehaviour
 
     void TakeDamage(int dmg)
     {
-        if(healthUI != null)
+        health -= dmg;
+        if (health > maxHealth)
+            health = maxHealth;
+        if (healthUI != null)
         {
             healthUI.text = "Health: " + health;
         }
-        health -= dmg;
-
+        
         if(health <= 0)
         {
             dead = true;
