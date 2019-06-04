@@ -29,12 +29,13 @@ public class CollideDamage : MonoBehaviour
         {
             Debug.Log(gameObject.name + " hit: " + other.gameObject.name + " with: " + damage + " damage");
             other.gameObject.SendMessage(("TakeDamage"), damage, SendMessageOptions.DontRequireReceiver);
+            if (shouldDestroyOnCollision)
+                Destroy(gameObject);
         }
         else
         {
 
         }
-        if (shouldDestroyOnCollision)
-            Destroy(gameObject);
+        
     }
 }
