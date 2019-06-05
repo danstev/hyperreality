@@ -71,7 +71,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 08b5f0da904168240a30b6787f37f7e4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -99,6 +99,8 @@ MonoBehaviour:
   FriendCheck: 1
   NameToCheck: Sword
   shouldDestroyOnCollision: 1
+  HitSounds: []
+  HitSource: {fileID: 0}
 --- !u!61 &3991922134663430320
 BoxCollider2D:
   m_ObjectHideFlags: 0

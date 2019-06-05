@@ -144,7 +144,7 @@ public class Enemy : MonoBehaviour
     }
 
     void OnDestroy() {
-        Debug.Log("Died");
-        Instantiate(health,p);
+        if (Random.Range(0,4) == 1)
+            Instantiate(health, p.position, p.rotation);
     }
 }

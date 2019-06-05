@@ -20,10 +20,17 @@ public class PlayerControl : MonoBehaviour
     //UI stuff
     public GameObject GameUI, InventoryUI, MenuUI, cam;
     public int menuCheck = 0;
+
+    // Animation
+    enum animDirection { ANIM_UNKNOWN = 0, ANIM_UP, ANIM_DOWN, ANIM_LEFT, ANIM_RIGHT };
+    Animator animator;
+    SpriteRenderer render;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        animator = GetComponent<Animator>();
+        render = GetComponent<SpriteRenderer>();
     }
 
     void SwitchUI()
@@ -34,6 +41,49 @@ public class PlayerControl : MonoBehaviour
          GameUI.SetActive(true);
          InventoryUI.SetActive(false);
          MenuUI.SetActive(false);
+    }
+
+    animDirection GetAnimationDirection(float h, float v) {
+        if (h > 0)
+            return animDirection.ANIM_RIGHT;
+        if (h < 0)
+            return animDirection.ANIM_LEFT;
+        if (v > 0)
+            return animDirection.ANIM_UP;
+        if (v < 0)
+            return animDirection.ANIM_DOWN;
+        return animDirection.ANIM_UNKNOWN;
+    }
+
+    void HandleAnimation(float h, float v) {
+        // Set sane animator properties
+        animator.speed = 1;
+        animator.SetBool("MoveX", false);
+        animator.SetBool("MoveDown", false);
+        animator.SetBool("MoveUp", false);
+        animator.SetBool("Idle", false);
+        render.flipX = false;
+
+        switch (GetAnimationDirection(h, v)) {
+            case (animDirection.ANIM_RIGHT):
+                animator.SetBool("MoveX", true);
+                render.flipX = true;
+                break;
+            case (animDirection.ANIM_LEFT):
+                animator.SetBool("MoveX", true);
+                render.flipX = false;
+                break;
+            case (animDirection.ANIM_DOWN):
+                animator.SetBool("MoveDown", true);
+                break;
+            case (animDirection.ANIM_UP):
+                animator.SetBool("MoveUp", true);
+                break;
+            default:
+                animator.SetBool("Idle", true);
+                break;
+        }
+
     }
 
     // Update is called once per frame
@@ -135,7 +185,7 @@ public class PlayerControl : MonoBehaviour
 
         float h = Input.GetAxis("Horizontal");
         float v = Input.GetAxis("Vertical");
-
+        HandleAnimation(h, v);
         Vector3 tempVect = new Vector3(h, v, 0);
         //tempVect = tempVect.normalized * movementSpeed * Time.deltaTime;
 
