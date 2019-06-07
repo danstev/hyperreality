@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-
     public GameObject[] inv;
     public Armour arm;
-    public Weapon wep;
+    private int itemSlots = 10;
+
+    // Player Item Stats
+    public int totalDefence = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
-        inv = new GameObject[10];
+        inv = new GameObject[itemSlots];
     }
 
     // Update is called once per frame
@@ -24,8 +27,6 @@ public class Inventory : MonoBehaviour
 
     void AddItem(GameObject i)
     {
-        Debug.Log("AddItemTriggered");
-        Debug.Log(i);
         int count = 0;
         while(inv[count] != null)
         {
@@ -38,6 +39,7 @@ public class Inventory : MonoBehaviour
         arm = i.GetComponent<Armour>();
         Debug.Log(arm);
         arm.equip();
+        UpdateAllStats();
     }
 
     void DropItem(int pos)
@@ -48,5 +50,19 @@ public class Inventory : MonoBehaviour
             inv[pos].GetComponent<Item>().enabled = true;//inv[pos].SetActive(true);
             inv[pos] = null;
         }
+    }
+
+    void UpdateAllStats() {
+        int currentDefence = 0;
+        for (int i = 0; i < itemSlots; i++)
+        {
+            if (inv[i] == null)
+                continue;
+            GameObject current = inv[i];
+            Armour currentArmour = current.GetComponent<Armour>();
+            if (currentArmour)
+                currentDefence += currentArmour.defense;
+        }
+        totalDefence = currentDefence;
     }
 }
