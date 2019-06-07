@@ -27,6 +27,7 @@ public class CollideDamage : MonoBehaviour
         Debug.Log(gameObject.name + " hit: " + other.gameObject.name + " will apply damage if last name isnt: " + NameToCheck);
         if (other.gameObject.name != NameToCheck)
         {
+            // The logging below is incorrect, as health also applies the defence modifier in the inventory
             Debug.Log(gameObject.name + " hit: " + other.gameObject.name + " with: " + damage + " damage");
             other.gameObject.SendMessage(("TakeDamage"), damage, SendMessageOptions.DontRequireReceiver);
             if (shouldDestroyOnCollision)
