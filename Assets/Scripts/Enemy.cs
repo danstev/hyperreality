@@ -46,6 +46,8 @@ public class Enemy : MonoBehaviour
         if (actionQueue.Count == 0)
             return true; // Nothing to process
 
+        
+        
         enEnemyActions currentAction = actionQueue.Dequeue(); // Get the action to consume from front of queue
 
         // Set up timer vars (these appeared to be the same for each case)
@@ -76,7 +78,10 @@ public class Enemy : MonoBehaviour
 
         while (Time.time <= start + time)
         {
-
+            if (p == null) // The target has been destroyed already
+                break;
+            if (target == null) // The target has been destroyed already
+                break;
             if (attackTimer <= 0)
             {
                 Attack();
@@ -118,6 +123,8 @@ public class Enemy : MonoBehaviour
 
         while (Time.time <= start + time)
         {
+            if (t == null)
+                break;
             t.position = t.position + ((towards * Time.deltaTime) * speed);
             yield return new WaitForEndOfFrame();
         }

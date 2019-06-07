@@ -12,14 +12,12 @@ public class Armour : Item
     {
         //Doesnt get to here? fix later, its just cosmetic at the moment
         Debug.Log("Armour equipped");
-        if(!equipped)
+        if (!equipped)
         {
-            
             effect.SetActive(true);
             GetComponent<SpriteRenderer>().enabled = false;
             equipped = true;
-        }
-        
+        }     
     }
 
     public void unequip()
