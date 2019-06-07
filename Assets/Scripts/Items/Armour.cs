@@ -17,7 +17,6 @@ public class Armour : Item
             effect.SetActive(true);
             GetComponent<SpriteRenderer>().enabled = false;
             equipped = true;
-            gameObject.SendMessage(("UpdateDefence"), defense, SendMessageOptions.DontRequireReceiver);
         }     
     }
 
