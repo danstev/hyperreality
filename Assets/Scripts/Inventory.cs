@@ -7,6 +7,7 @@ public class Inventory : MonoBehaviour
 
     public GameObject[] inv;
     public Armour arm;
+    public Weapon wep;
     // Start is called before the first frame update
     void Start()
     {

@@ -25,11 +25,6 @@ public class Item : MonoBehaviour
 
     }
 
-    public void equip()
-    {
-
-    }
-
     void OnCollisionEnter2D(Collision2D other)
     {
         if(equipable)

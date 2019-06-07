@@ -1,0 +1,18 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Dagger : Weapon
+{
+    
+    public Ability one, two;
+
+    public void UpdateWeaponStats()
+    {
+        one.AblityDamage = 5;
+        two.AblityDamage = 5;
+    }
+
+
+    
+}

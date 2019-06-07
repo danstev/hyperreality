@@ -203,6 +203,17 @@ public class PlayerControl : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = new Vector3(0,0,0);
             jumpTemp -= Time.deltaTime;
         }
+
+        if (Input.GetKeyDown("e"))
+        {
+            /*  out of bounds, do not touch
+            Debug.Log("Interact");
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, 20)){
+                Instantiate(arrow);
+            }
+            */
+        }
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
