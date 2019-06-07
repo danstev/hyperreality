@@ -8,10 +8,10 @@ public class Armour : Item
     public GameObject effect;
     public bool equipped;
 
-    void Equip()
+    public void equip()
     {
         //Doesnt get to here? fix later, its just cosmetic at the moment
-        Debug.Log("hi");
+        Debug.Log("Armour equipped");
         if(!equipped)
         {
             
@@ -22,7 +22,7 @@ public class Armour : Item
         
     }
 
-    void Unequip()
+    public void unequip()
     {
         if(equipped)
         {

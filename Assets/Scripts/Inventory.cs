@@ -23,6 +23,8 @@ public class Inventory : MonoBehaviour
 
     void AddItem(GameObject i)
     {
+        Debug.Log("AddItemTriggered");
+        Debug.Log(i);
         int count = 0;
         while(inv[count] != null)
         {
@@ -33,6 +35,7 @@ public class Inventory : MonoBehaviour
         //i.SetActive(false);
         i.transform.localPosition = new Vector3(0,0,0);
         arm = i.GetComponent<Armour>();
+        Debug.Log(arm);
         arm.equip();
     }
 
