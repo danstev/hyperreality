@@ -12,10 +12,11 @@ public class PlayerControl : MonoBehaviour
     public float timer;
 
     //Timers and weapon
-    public GameObject arrow;
+    public GameObject weap;
     public float fireSpeed, fireReload;
     public float jumpTemp, jumpTimer;
     public Collider2D coll;
+    public Ability one,two;
 
     //UI stuff
     public GameObject GameUI, InventoryUI, MenuUI, cam;
@@ -133,13 +134,16 @@ public class PlayerControl : MonoBehaviour
 
         if (!Input.GetMouseButton(0))
         {
-
-            arrow.transform.position = Vector3.MoveTowards(arrow.transform.position, transform.position, Time.deltaTime * 40);
+            if(weap != null)
+            {
+                weap.transform.position = Vector3.MoveTowards(weap.transform.position, transform.position, Time.deltaTime * 40);
+            }
         }
 
-         if (Input.GetMouseButton(0) && fireReload <=0)
+        
+         if (Input.GetMouseButton(0))
          {
-
+             /* 
             //fireReload = fireSpeed;
             //Vector2 shootDir = new Vector2((Input.mousePosition.x/Screen.width) - 0.5f, (Input.mousePosition.y / Screen.height) - 0.5f);
             //shootDir.Normalize();
@@ -147,13 +151,12 @@ public class PlayerControl : MonoBehaviour
             //pos.x += shootDir.x; pos.y += shootDir.y;
             //pos.Normalize();
             //arrow.transform.position += pos * Time.deltaTime * weaponSpeedMod;
-            /*
+            
             GameObject g = Instantiate(arrow, transform.position, Quaternion.identity);
             fireReload = fireSpeed;
             g.GetComponent<Rigidbody2D>().velocity = shootDir * 15.0f;
             Destroy(g,5.0f);
-            */
-
+            
             coll.enabled = true;
 
             float hi = (Input.mousePosition.x / Screen.width) - 0.5f;
@@ -162,25 +165,37 @@ public class PlayerControl : MonoBehaviour
             Vector3 tempVecti = new Vector3(hi, vi, 0);
             tempVecti = tempVecti.normalized * movementSpeed * Time.deltaTime;
             
-            arrow.transform.localPosition += tempVecti;
+            weap.transform.localPosition += tempVecti;
 
             Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
             Vector2 mouseOnScreen = Camera.main.ScreenToViewportPoint(Input.mousePosition);
             float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
-            arrow.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 45));
+            weap.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 45));
+            */
+            if(one)
+            {
+                one.Use(weap, coll, 5);
+            }
+            Debug.Log("Left Click");
         }
+        
+        
 
-        if (Input.GetMouseButton(1) && fireReload <= 0)
+        if (Input.GetMouseButton(1))
         {
-            coll.enabled = true;
-
-            //POS
-            arrow.transform.position = new Vector3(transform.position.x + (Mathf.Cos(timer * 15) * 2) ,transform.position.y + (Mathf.Sin(timer * 15) * 2) , 0);
+            if(two)
+            {
+                two.Use(weap, coll, 5);
+            }
+            Debug.Log("Right Click");
         }
 
         if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1))
         {
-            coll.enabled = false;
+            if(one && two)
+            {
+                coll.enabled = false;
+            }
         }
 
         float h = Input.GetAxis("Horizontal");
@@ -219,5 +234,13 @@ public class PlayerControl : MonoBehaviour
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
     {
         return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
+    }
+
+    public void UpdateAbilities(GameObject w, Ability a, Ability b)
+    {
+        coll = w.GetComponent<Collider2D>();
+        weap = w;
+        one = a;
+        two = b;
     }
 }

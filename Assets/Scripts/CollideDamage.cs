@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CollideDamage : MonoBehaviour
 {
+    /*
+    DEPRECATED, USE A WEAPON INSTEAD WITH A CORRECT ABILITY
+     */
     public int damage;
     public bool FriendCheck =true;
     public string NameToCheck;

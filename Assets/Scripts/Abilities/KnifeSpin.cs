@@ -5,12 +5,14 @@ using UnityEngine;
 public class KnifeSpin : Ability
 {
 
-    public void Use(GameObject i, Collider2D c, int dam)
+    public float scale = 2.0f;
+
+    public override void Use(GameObject i, Collider2D c, int dam)
     {
+        Debug.Log(gameObject.name + " " + gameObject.transform.parent.name);
         c.enabled = true;
 
-            //POS
-            i.transform.position = new Vector3(transform.position.x + (Mathf.Cos(TimerTemp * 15) * 2) ,transform.position.y + (Mathf.Sin(TimerTemp * 15) * 2) , 0);
+        transform.position = new Vector3(transform.position.x + (Mathf.Cos(TTime * 15) * scale) ,transform.position.y + (Mathf.Sin(TTime * 15) * scale) , 0);
     }
 
 

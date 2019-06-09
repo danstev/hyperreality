@@ -11,6 +11,7 @@ public class Ability : MonoBehaviour
     public float TTime = 0;
     public float TimerTemp = 0;
 
+
     void Activate()
     {
 
@@ -20,6 +21,11 @@ public class Ability : MonoBehaviour
     {
         TimerTemp -= Time.deltaTime;
         TTime += Time.deltaTime;
+    }
+    
+    public virtual void Use(GameObject i, Collider2D c, int dam)
+    {
+        
     }
 
 

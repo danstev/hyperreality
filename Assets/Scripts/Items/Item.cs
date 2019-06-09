@@ -6,6 +6,8 @@ public class Item : MonoBehaviour
 {
     public string itemName; 
     public bool equipable; //True is weapon/armour, so send it to inv system, false is just run the use();
+    public bool inInv = false;
+    
 
 
     // Start is called before the first frame update

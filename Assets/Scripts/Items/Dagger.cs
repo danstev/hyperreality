@@ -5,7 +5,7 @@ using UnityEngine;
 public class Dagger : Weapon
 {
     
-    public Ability one, two;
+    
 
     public void UpdateWeaponStats()
     {
