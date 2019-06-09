@@ -17,9 +17,12 @@ public class Enemy : MonoBehaviour
     public enum enEnemyActions { UNKNOWN = 0, ROAM, ATTACK, RETREAT };
     public Queue<enEnemyActions> actionQueue = new Queue<enEnemyActions>();
 
+    private Animator animator;
+
     private void Start()
     {
         dead = false;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -46,7 +49,9 @@ public class Enemy : MonoBehaviour
         if (actionQueue.Count == 0)
             return true; // Nothing to process
 
-        
+        animator.speed = 1;
+        animator.SetBool("EnemyAttacking",false);
+        animator.SetBool("EnemyFloating",false);
         
         enEnemyActions currentAction = actionQueue.Dequeue(); // Get the action to consume from front of queue
 
@@ -58,12 +63,15 @@ public class Enemy : MonoBehaviour
             case(enEnemyActions.ROAM):
                 StartCoroutine(RandomMove(timer, p));
                 Debug.Log(gameObject.name + " is randomly moving.");
+                animator.SetBool("EnemyFloating", true);
                 break;
             case (enEnemyActions.ATTACK):
                 StartCoroutine(AttackMove(timer, target));
                 Debug.Log(gameObject.name + " is attacking: " + target.name + ".");
+                animator.SetBool("EnemyAttacking", true);
                 break;
             default:
+                animator.SetBool("EnemyFloating", true);
                 return false;
         }
         return true;

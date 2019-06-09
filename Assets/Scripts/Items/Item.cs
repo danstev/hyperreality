@@ -7,8 +7,7 @@ public class Item : MonoBehaviour
     public string itemName; 
     public bool equipable; //True is weapon/armour, so send it to inv system, false is just run the use();
     public bool inInv = false;
-    
-
+    public enum enItemType {ITEM_UNKNOWN = 0, ITEM_ARMOUR, ITEM_WEAPON}
 
     // Start is called before the first frame update
     void Start()
@@ -39,5 +38,9 @@ public class Item : MonoBehaviour
             Use(other.gameObject);
         }
         
+    }
+
+    public virtual enItemType GetItemType() {
+        return enItemType.ITEM_UNKNOWN;
     }
 }

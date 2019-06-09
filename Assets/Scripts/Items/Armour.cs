@@ -7,7 +7,7 @@ public class Armour : Item
     public int defense; //deal wth this later;
     public GameObject effect;
     public bool equipped;
-
+    public enItemType itemType = enItemType.ITEM_ARMOUR;
     public void equip()
     {
         //Doesnt get to here? fix later, its just cosmetic at the moment
@@ -30,4 +30,10 @@ public class Armour : Item
         }
     }
 
+    public override enItemType GetItemType()
+    {
+        return enItemType.ITEM_ARMOUR;
+    }
 }
+
+

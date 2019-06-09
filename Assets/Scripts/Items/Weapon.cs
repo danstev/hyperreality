@@ -10,7 +10,7 @@ public class Weapon : Item
     public Collider2D WeaponColl;
     public AudioClip[] HitSounds;
     public AudioSource HitSource;
-
+    public enItemType itemType = enItemType.ITEM_WEAPON;
     public bool FriendCheck =true;
     public string NameToCheck;
     public bool shouldDestroyOnCollision = false;
@@ -72,5 +72,10 @@ public class Weapon : Item
         {
             equipped = true;
         }     
+    }
+
+    public override enItemType GetItemType()
+    {
+        return enItemType.ITEM_WEAPON;
     }
 }

@@ -28,13 +28,24 @@ public class Inventory : MonoBehaviour
 
     //drop all, drop 1,
 
-    void EquipItem(GameObject i, int type)
+    void EquipItem(GameObject i, Item.enItemType type)
     {
-        if(type == 1)
+        if(type == Item.enItemType.ITEM_WEAPON)
         {
             wea = i.GetComponent<Weapon>();
             wea.equipped = true;
             wea.inInv = true;
+        }
+        else if (type == Item.enItemType.ITEM_ARMOUR)
+        {
+            arm = i.GetComponent<Armour>();
+            SpriteRenderer currentRender = arm.GetComponent<SpriteRenderer>();
+            if (currentRender != null) {
+                currentRender.enabled = false;
+            }
+            
+            arm.equipped = true;
+            arm.inInv = true;
         }
     }
 
@@ -47,12 +58,12 @@ public class Inventory : MonoBehaviour
         }
         inv[count] = i;
         i.transform.parent = gameObject.transform;
-        //i.SetActive(false);
         i.transform.localPosition = new Vector3(0,0,0);
-        EquipItem(i, 1);
-        //arm = i.GetComponent<Armour>();
-       // Debug.Log(arm);
-       // arm.equip();
+        Item currentItem = i.GetComponent<Item>();
+        if(!currentItem)
+            return;
+        EquipItem(i, currentItem.GetItemType());
+
         UpdateAllStats();
     }
 
