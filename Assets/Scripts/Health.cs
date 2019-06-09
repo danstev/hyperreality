@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
 {
     public int health;
     public int maxHealth;
-    public Inventory inventory;
+    private int def;
     public Enemy d;
     private bool dead = false;
 
@@ -16,17 +16,24 @@ public class Health : MonoBehaviour
     public AudioSource DamageTaken;
     public AudioClip[] HitTaken;
 
+    public GameObject popuptext;
+
     void Start()
     {
         DamageTaken = GetComponent<AudioSource>();
-        inventory = gameObject.GetComponent<Inventory>();
+        def = GetComponent<Statistics>().totalDefense;
     }
 
     void TakeDamage(int dmg)
     {
-        if (inventory)
-            dmg -= inventory.totalDefence;
-       
+        dmg -= def;
+
+        Vector3 offset = new Vector3(0,0.5f,0.0f);
+        GameObject g = Instantiate(popuptext, transform.position, Quaternion.identity);
+        TextMesh t = g.GetComponent<TextMesh>();
+        t.text = dmg.ToString();
+        Destroy(g, 1.0f);
+
         if(DamageTaken != null && HitTaken.Length > 0)
         {
             DamageTaken.clip = HitTaken[Random.Range(0,HitTaken.Length-1)];

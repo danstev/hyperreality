@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour
     //UI stuff
     public GameObject GameUI, InventoryUI, MenuUI, cam;
     public int menuCheck = 0;
-
+    public Vector3 campos = new Vector3(0,0,-16f);
     // Animation
     enum animDirection { ANIM_UNKNOWN = 0, ANIM_UP, ANIM_DOWN, ANIM_LEFT, ANIM_RIGHT };
     Animator animator;
@@ -92,7 +92,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            cam.transform.localPosition = new Vector3(0,0,-18);
+            cam.transform.localPosition = campos;
         }
 
         if (Input.GetKeyDown("i"))
@@ -143,35 +143,6 @@ public class PlayerControl : MonoBehaviour
         
          if (Input.GetMouseButton(0))
          {
-             /* 
-            //fireReload = fireSpeed;
-            //Vector2 shootDir = new Vector2((Input.mousePosition.x/Screen.width) - 0.5f, (Input.mousePosition.y / Screen.height) - 0.5f);
-            //shootDir.Normalize();
-            //Vector3 pos = transform.position;
-            //pos.x += shootDir.x; pos.y += shootDir.y;
-            //pos.Normalize();
-            //arrow.transform.position += pos * Time.deltaTime * weaponSpeedMod;
-            
-            GameObject g = Instantiate(arrow, transform.position, Quaternion.identity);
-            fireReload = fireSpeed;
-            g.GetComponent<Rigidbody2D>().velocity = shootDir * 15.0f;
-            Destroy(g,5.0f);
-            
-            coll.enabled = true;
-
-            float hi = (Input.mousePosition.x / Screen.width) - 0.5f;
-            float vi = (Input.mousePosition.y / Screen.height) - 0.5f;
-
-            Vector3 tempVecti = new Vector3(hi, vi, 0);
-            tempVecti = tempVecti.normalized * movementSpeed * Time.deltaTime;
-            
-            weap.transform.localPosition += tempVecti;
-
-            Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(transform.position);
-            Vector2 mouseOnScreen = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-            float angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
-            weap.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle + 45));
-            */
             if(one)
             {
                 one.Use(weap, coll, 5);
@@ -221,11 +192,11 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.GetKeyDown("e"))
         {
-            /*  out of bounds, do not touch
+            /* oob
             Debug.Log("Interact");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, 20)){
-                Instantiate(arrow);
+                Debug.DrawRay(ray.origin, ray.direction);
             }
             */
         }

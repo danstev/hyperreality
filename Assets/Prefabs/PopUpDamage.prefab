@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8023204892271356393}
   - component: {fileID: 8023204892271356392}
   - component: {fileID: 8023204892271356395}
+  - component: {fileID: -1747333784992030024}
   m_Layer: 0
   m_Name: PopUpDamage
   m_TagString: Untagged
@@ -80,15 +81,34 @@ TextMesh:
   m_GameObject: {fileID: 8023204892271356394}
   m_Text: text
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 2.03
   m_LineSpacing: 1
-  m_Anchor: 0
+  m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 0
-  m_FontStyle: 0
+  m_FontStyle: 3
   m_RichText: 1
-  m_Font: {fileID: 0}
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281414129
+--- !u!95 &-1747333784992030024
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8023204892271356394}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9a2999868fe1a24ea69e63565400bb0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

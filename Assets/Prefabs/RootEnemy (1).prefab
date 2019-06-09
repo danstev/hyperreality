@@ -47,7 +47,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   maxHealth: 15
-  inventory: {fileID: 0}
   d: {fileID: 2692750701259595518}
   healthUI: {fileID: 0}
   DamageTaken: {fileID: 5995683363312182640}
@@ -58,6 +57,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f260f6f80550a41438c82cced7b8bba6, type: 3}
   - {fileID: 8300000, guid: dc48c5c2d81e91d4aa465ec421a88e08, type: 3}
   - {fileID: 8300000, guid: e9c6576e280f37e4e9f9aac136c0cacf, type: 3}
+  popuptext: {fileID: 8023204892271356394, guid: e7c3728fe788b754d8dbfe8a3b27ea51,
+    type: 3}
 --- !u!61 &2692750699726942668
 BoxCollider2D:
   m_ObjectHideFlags: 0
