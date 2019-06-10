@@ -192,13 +192,14 @@ public class PlayerControl : MonoBehaviour
 
         if (Input.GetKeyDown("e"))
         {
-            /* oob
+            
             Debug.Log("Interact");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Debug.DrawRay(ray.origin, ray.direction * 20);
             if (Physics.Raycast(ray, 20)){
-                Debug.DrawRay(ray.origin, ray.direction);
+                
             }
-            */
+            
         }
     }
 

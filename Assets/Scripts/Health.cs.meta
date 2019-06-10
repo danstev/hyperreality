@@ -3,7 +3,12 @@ guid: c5d07b1c3bfca014280be70765f77dd5
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - d: {instanceID: 0}
+  - healthUI: {instanceID: 0}
+  - DamageTaken: {instanceID: 0}
+  - popuptext: {fileID: 8023204892271356394, guid: e7c3728fe788b754d8dbfe8a3b27ea51,
+      type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

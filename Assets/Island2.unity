@@ -311,6 +311,12 @@ PrefabInstance:
       propertyPath: campos.z
       value: -16.19
       objectReference: {fileID: 0}
+    - target: {fileID: 2157463052954205395, guid: a33f61172b098d348916c7f1e5cb69fe,
+        type: 3}
+      propertyPath: popuptext
+      value: 
+      objectReference: {fileID: 8023204892271356394, guid: e7c3728fe788b754d8dbfe8a3b27ea51,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a33f61172b098d348916c7f1e5cb69fe, type: 3}
 --- !u!1 &1052897486

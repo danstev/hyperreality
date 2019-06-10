@@ -28,7 +28,7 @@ public class Health : MonoBehaviour
     {
         dmg -= def;
 
-        Vector3 offset = new Vector3(0,0.5f,0.0f);
+        Vector3 offset = new Vector3(0,1f,0.0f);
         GameObject g = Instantiate(popuptext, transform.position, Quaternion.identity);
         TextMesh t = g.GetComponent<TextMesh>();
         t.text = dmg.ToString();
