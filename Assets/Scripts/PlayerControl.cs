@@ -193,15 +193,23 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetKeyDown("e"))
         {
             
-            Debug.Log("Interact");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.DrawRay(ray.origin, ray.direction * 20);
-            if (Physics.Raycast(ray, 20)){
-                
-            }
+            Vector3 mousePosition = Input.mousePosition;
+            mousePosition.z = Mathf.Infinity;
+            RaycastHit2D hit = Physics2D.Raycast(ray.origin,  ray.direction * 20,Mathf.Infinity);
+            Debug.DrawRay(ray.origin,  ray.direction * 20,Color.blue, 50);
+            Debug.Log("Interacted.");
+            if(hit)
+            {
+                Vector3 targetPos = hit.collider.gameObject.transform.position; //Now send message whenever
+                Debug.Log ("Interact hit name: " + hit.collider.name);
             
+            }
         }
+            
     }
+
+    
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
     {
