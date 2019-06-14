@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         DamageTaken = GetComponent<AudioSource>();
-        def = GetComponent<Statistics>().totalDefense;
+        //def = GetComponent<Statistics>().totalDefense;
     }
 
     void TakeDamage(int dmg)

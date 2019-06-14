@@ -21,7 +21,7 @@ public class PlayerControl : MonoBehaviour
     //UI stuff
     public GameObject GameUI, InventoryUI, MenuUI, cam;
     public int menuCheck = 0;
-    public Vector3 campos = new Vector3(0,0,-16f);
+    public Vector3 campos = new Vector3(0,15f,-10f);
     // Animation
     enum animDirection { ANIM_UNKNOWN = 0, ANIM_UP, ANIM_DOWN, ANIM_LEFT, ANIM_RIGHT };
     Animator animator;
