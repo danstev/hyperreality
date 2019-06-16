@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraControl : MonoBehaviour
 {
     float speed = 3f;
-    private Vector3 campos = new Vector3(0,15,-10f);
+    private Vector3 campos = new Vector3(0,5,-10f);
     // Start is called before the first frame update
     void Start()
     {
