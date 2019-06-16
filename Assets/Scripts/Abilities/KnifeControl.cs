@@ -17,7 +17,7 @@ public class KnifeControl : Ability
         Vector3 tempVecti = new Vector3(hi, vi, 0);
         tempVecti = tempVecti.normalized * scale * Time.deltaTime;
             
-        i.transform.localPosition += tempVecti;
+        i.transform.position += tempVecti;
 
         Vector2 positionOnScreen = Camera.main.WorldToViewportPoint(i.transform.parent.transform.position);
         Vector2 mouseOnScreen = Camera.main.ScreenToViewportPoint(Input.mousePosition);

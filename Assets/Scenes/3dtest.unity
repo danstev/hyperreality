@@ -347,7 +347,7 @@ PrefabInstance:
     - target: {fileID: 5552914556915812580, guid: a39f940cac4abd845aedb06d6cf09fad,
         type: 3}
       propertyPath: campos.y
-      value: 15
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3020283933004731624, guid: a39f940cac4abd845aedb06d6cf09fad,
         type: 3}

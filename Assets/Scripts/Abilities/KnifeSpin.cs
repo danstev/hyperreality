@@ -12,7 +12,7 @@ public class KnifeSpin : Ability
         Debug.Log(gameObject.name + " " + gameObject.transform.parent.name);
         c.enabled = true;
 
-        transform.position = new Vector3(transform.position.x + (Mathf.Cos(TTime * 15) * scale) ,transform.position.y + (Mathf.Sin(TTime * 15) * scale) , 0);
+        transform.position = new Vector3(transform.position.x + (Mathf.Cos(TTime * 15) * scale) ,transform.position.y + (Mathf.Sin(TTime * 15) * scale) , transform.position.z);
     }
 
 
