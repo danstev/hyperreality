@@ -27,9 +27,10 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if(dead)
+        if (dead)
         {
-            Destroy(this.gameObject);
+            Die();
+            return;
         }
 
         tempTimer -= Time.deltaTime;
@@ -42,6 +43,15 @@ public class Enemy : MonoBehaviour
         if (!ConsumeQueue())
             Debug.Log("No Action Provided for that event");
 
+    }
+
+    void Die() {
+        float nLen = animator.GetCurrentAnimatorStateInfo(0).length;
+        animator.SetBool("EnemyAttacking", false);
+        animator.SetBool("EnemyFloating", false);
+        animator.SetBool("EnemyDead", true);
+        animator.speed = 1;
+        Destroy(this.gameObject,nLen);
     }
 
     // Handles next item from Queue. Returns false if action unknown
@@ -159,6 +169,7 @@ public class Enemy : MonoBehaviour
     }
 
     void OnDestroy() {
+        
         if (Random.Range(0,4) == 1)
             Instantiate(health, p.position, p.rotation);
     }
