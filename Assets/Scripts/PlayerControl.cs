@@ -203,6 +203,7 @@ public class PlayerControl : MonoBehaviour
             {
                 Vector3 targetPos = hit.collider.gameObject.transform.position; //Now send message whenever
                 Debug.Log ("Interact hit name: " + hit.collider.name);
+                hit.collider.SendMessage(("Interact"), SendMessageOptions.DontRequireReceiver);
             
             }
         }

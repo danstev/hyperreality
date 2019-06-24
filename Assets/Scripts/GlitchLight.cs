@@ -8,6 +8,7 @@ public class GlitchLight : MonoBehaviour
     private int count = 0;
     private int target;
     private bool s = true;
+    public bool Increase = false;
     public GameObject g;
 
     void Start()
@@ -31,15 +32,33 @@ public class GlitchLight : MonoBehaviour
         {
             g.SetActive(false);
             s= false;
+
+            if(Increase)
+            {
+                target = Random.Range(0,(max * 10));
+            }
+            else
+            {
+                target = Random.Range(0,max);
+            }
             
         }
         else
         {
             g.SetActive(true);
             s= true;
+
+            if(Increase)
+            {
+                target = Random.Range(0,max);
+            }
+            else
+            {
+                target = Random.Range(0,max);
+            }
         }
         
-        target = Random.Range(0,max);
+        
         count = 0;
     }
 
