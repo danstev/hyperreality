@@ -9,9 +9,11 @@ public class Switch : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
+            
             if(child.gameObject.activeSelf == true)
             {
                 child.gameObject.SetActive(false);
+                
             }
             else
             {
