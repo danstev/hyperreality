@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public void NewGame()
     {
-        StartCoroutine(LoadScene("Island"));
+        StartCoroutine(LoadScene("Start"));
     }
 
     public void ExitGame()
