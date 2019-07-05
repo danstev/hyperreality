@@ -40,7 +40,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1898617755}
   serializedVersion: 6
-  lengthInSec: 2.41
+  lengthInSec: 3.18
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -168,7 +168,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5.11
+      scalar: 5
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -865,7 +865,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 24.03
+      scalar: 50
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -918,7 +918,7 @@ ParticleSystem:
     rateOverDistance:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 0.4
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -3557,7 +3557,7 @@ ParticleSystem:
     enabled: 1
     serializedVersion: 3
     type: 1
-    collisionMode: 1
+    collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
     multiplyColliderForceByParticleSpeed: 0
@@ -3877,13 +3877,13 @@ ParticleSystem:
         m_RotationOrder: 4
     maxLights: 20
   TrailModule:
-    enabled: 0
+    enabled: 1
     mode: 0
-    ratio: 1
+    ratio: 0.08
     lifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.8
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3933,7 +3933,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    minVertexDistance: 0.2
+    minVertexDistance: 1.14
     textureMode: 0
     ribbonCount: 1
     shadowBias: 0.5
@@ -3949,7 +3949,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 1, g: 1, b: 1, a: 1}
+      maxColor: {r: 1, g: 1, b: 1, a: 0.34901962}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4011,7 +4011,7 @@ ParticleSystem:
     widthOverTrail:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.23
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -4709,7 +4709,7 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 43d165938cf0fbe49830bf53e44abcb5, type: 2}
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 72954cf21c5eae848a4c203c28b753af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4733,7 +4733,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0
-  m_MaxParticleSize: 0.5
+  m_MaxParticleSize: 1.05
   m_CameraVelocityScale: -15.03
   m_VelocityScale: -0.25
   m_LengthScale: 1.6
@@ -4837,6 +4837,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2157463052954205400, guid: a33f61172b098d348916c7f1e5cb69fe,
+        type: 3}
+      propertyPath: m_Name
+      value: Player Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157463052954205398, guid: a33f61172b098d348916c7f1e5cb69fe,
+        type: 3}
+      propertyPath: campos.z
+      value: -16.19
+      objectReference: {fileID: 0}
     - target: {fileID: 2157463052954205399, guid: a33f61172b098d348916c7f1e5cb69fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4942,15 +4952,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -13.92
       objectReference: {fileID: 0}
-    - target: {fileID: 2157463052954205400, guid: a33f61172b098d348916c7f1e5cb69fe,
+    - target: {fileID: 2157463051977418352, guid: a33f61172b098d348916c7f1e5cb69fe,
         type: 3}
-      propertyPath: m_Name
-      value: Player Variant
+      propertyPath: m_BackGroundColor.r
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2157463052954205398, guid: a33f61172b098d348916c7f1e5cb69fe,
+    - target: {fileID: 2157463051977418352, guid: a33f61172b098d348916c7f1e5cb69fe,
         type: 3}
-      propertyPath: campos.z
-      value: -16.19
+      propertyPath: m_BackGroundColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157463051977418352, guid: a33f61172b098d348916c7f1e5cb69fe,
+        type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157463051977418352, guid: a33f61172b098d348916c7f1e5cb69fe,
+        type: 3}
+      propertyPath: field of view
+      value: 35.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2157463051977418352, guid: a33f61172b098d348916c7f1e5cb69fe,
+        type: 3}
+      propertyPath: orthographic size
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8724887915120582874, guid: a33f61172b098d348916c7f1e5cb69fe,
         type: 3}
@@ -5006,31 +5031,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UseColorTemperature
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2157463051977418352, guid: a33f61172b098d348916c7f1e5cb69fe,
-        type: 3}
-      propertyPath: m_BackGroundColor.r
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2157463051977418352, guid: a33f61172b098d348916c7f1e5cb69fe,
-        type: 3}
-      propertyPath: m_BackGroundColor.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2157463051977418352, guid: a33f61172b098d348916c7f1e5cb69fe,
-        type: 3}
-      propertyPath: m_BackGroundColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2157463051977418352, guid: a33f61172b098d348916c7f1e5cb69fe,
-        type: 3}
-      propertyPath: orthographic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2157463051977418352, guid: a33f61172b098d348916c7f1e5cb69fe,
-        type: 3}
-      propertyPath: orthographic size
-      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a33f61172b098d348916c7f1e5cb69fe, type: 3}
