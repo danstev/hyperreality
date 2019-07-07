@@ -42,8 +42,8 @@ Light:
   serializedVersion: 9
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 6.56
-  m_Range: 5.48
+  m_Intensity: 1.38
+  m_Range: 1.85
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -395,7 +395,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6826191176506746125}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
@@ -574,7 +574,7 @@ MonoBehaviour:
   HitSource: {fileID: 6826191176506746120}
   itemType: 2
   FriendCheck: 1
-  NameToCheck: Player
+  TagToCheck: Player
   shouldDestroyOnCollision: 0
   one: {fileID: 6826191176506746132}
   two: {fileID: 6826191176506746122}

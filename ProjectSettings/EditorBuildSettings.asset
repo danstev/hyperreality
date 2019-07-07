@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Start.unity
     guid: a4006077e6008c94fa234e09a8add4a9
+  - enabled: 1
+    path: Assets/Scenes/Hub.unity
+    guid: 067f1c16c66c19b43b9189b9357e018d
+  - enabled: 1
+    path: Assets/Scenes/Isle.unity
+    guid: d036abe6846e441418d092bedffe35ec
   m_configObjects: {}

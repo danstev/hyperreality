@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5995683363312182640}
   m_Layer: 0
   m_Name: HitBox
-  m_TagString: Damageable
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,7 +264,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 042e3b9ac6ec12a478f87b1aaa62d97b, type: 2}
+  - {fileID: 2100000, guid: ab1473769cfa2ac43972b83391d8923a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

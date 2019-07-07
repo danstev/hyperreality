@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8832138786176589750}
   - component: {fileID: 5920648432422053281}
   - component: {fileID: 416259809423446691}
-  - component: {fileID: 7920544217267886592}
   - component: {fileID: -8143397367601424096}
+  - component: {fileID: -264868099958612272}
   m_Layer: 0
   m_Name: fireball
   m_TagString: Untagged
@@ -104,22 +104,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7920544217267886592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294810332299006703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54b5bc7ffce310d468ea3e55d862e390, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 5
-  FriendCheck: 1
-  NameToCheck: HitBox
-  shouldDestroyOnCollision: 0
 --- !u!61 &-8143397367601424096
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,3 +130,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.32, y: 0.32}
   m_EdgeRadius: 0
+--- !u!114 &-264868099958612272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294810332299006703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe37c70d9e4c29e49a56bbcc1f6685af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemName: Fireball
+  equipable: 1
+  inInv: 0
+  SpellDamage: 5
+  SpellSpeed: 0
+  equipped: 0
+  WeaponColl: {fileID: 0}
+  HitSounds: []
+  HitSource: {fileID: 0}
+  itemType: 2
+  FriendCheck: 1
+  TagToCheck: Enemy
+  shouldDestroyOnCollision: 1
