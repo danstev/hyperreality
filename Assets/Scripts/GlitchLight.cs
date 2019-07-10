@@ -50,7 +50,7 @@ public class GlitchLight : MonoBehaviour
 
             if(Increase)
             {
-                target = Random.Range(0,max);
+                target = Random.Range(0,max / 10);
             }
             else
             {
