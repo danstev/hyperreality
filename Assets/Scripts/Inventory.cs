@@ -71,6 +71,7 @@ public class Inventory : MonoBehaviour
     {
         if(inv[pos] != null)
         {
+            //checktype
             inv[pos].transform.parent = null;
             inv[pos].GetComponent<Item>().enabled = true;//inv[pos].SetActive(true);
             inv[pos] = null;
